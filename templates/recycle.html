@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Title -->
+        <title>분리수거함</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../static/css/recycle.css">
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+        <script>
+            let score = 0; // 점수
+
+            function loadFile(waste) {
+                let form = document.form;
+                let formData = new FormData(form);
+
+                let wasteFile = document.getElementById(waste);
+
+                console.log(wasteFile)
+
+                formData.append('waste', waste)
+                formData.append('waste_img', wasteFile.files[0]);
+
+                $.ajax({
+                    url : "/api/recycle_check",
+                    type : "POST",
+                    enctype: 'multipart/form-data',
+                    processData : false,
+                    contentType : false,
+                    data : formData,
+
+                    success: function(response) {
+                        wasteFile.value = '';
+
+                        if(response['result'] == 'true') {
+                            score ++;
+                            alert('올바른 분리수거군,, 자네 상점을 주겠네')
+                        } else {
+                            score --;
+                            alert('분리수거도 못해? 사형이다.')
+                        }
+
+                    }
+                });
+            }
+            function submit() {
+                $.ajax({
+                    url : "/api/submit",
+                    type : "POST",
+                    data : {
+                        score: score // 최종 점수 제출
+                    },
+                    success: function(response) {
+                        msg = '분리수거 종료 ( 분리수거 점수 : ' + score + ' )'
+                        alert(msg)
+                        window.location.href='/result'
+                    }
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>내가 분리수거 왕이 될 상인가?</h1>
+        <form method="post" name="form">
+            <img src="../static/img/ewaste.jpg" onclick="$('#eWasteFile').click()">
+            <input type="file" id="eWasteFile" name="eWasteFile" accept="image/*" onchange="loadFile('eWasteFile')">
+
+            <img src="../static/img/plastic.jpg" onclick="$('#plasticFile').click()">
+            <input type="file" id="plasticFile" name="plasticFile" accept="image/*" onchange="loadFile('plasticFile')">
+
+            <img src="../static/img/metal.jpg" onclick="$('#metalFile').click()">
+            <input type="file" id="metalFile" name="metalFile" accept="image/*" onchange="loadFile('metalFile')">
+
+            <img src="../static/img/glass.jpg" onclick="$('#glassFile').click()">
+            <input type="file" id="glassFile" name="glassFile" accept="image/*" onchange="loadFile('glassFile')">
+
+            <img src="../static/img/paper.jpg" onclick="$('#paperFile').click()">
+            <input type="file" id="paperFile" name="paperFile" accept="image/*" onchange="loadFile('paperFile')">
+
+            <img src="../static/img/organic.jpg" onclick="$('#organicFile').click()">
+            <input type="file" id="organicFile" name="organicFile" accept="image/*" onchange="loadFile('organicFile')">
+        </form>
+
+        <div class="c">
+            <button onclick="submit()">분리수거 끝</button>
+        </div>
+
+    </body>
+</html>
