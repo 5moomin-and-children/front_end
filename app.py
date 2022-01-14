@@ -11,7 +11,7 @@ import certifi
 import jwt
 
 # DB
-client = MongoClient('mongodb+srv://jcode:1234@cluster0.z0xvg.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
+client = MongoClient('mongodb+srv://test:sparta@cluster0.jhevf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', tlsCAFile=certifi.where())
 db = client.recycleKing
 
 # jwt Secret key
@@ -156,19 +156,18 @@ def api_recycle_check():
         print('what pred name?', pred_name)
 
         if pred_name == 0:
-            pred_name = 'eWasteFile'
-        elif pred_name == 8:
-            pred_name = 'plasticFile'
-        elif pred_name == 2:
             pred_name = 'metalFile'
-        elif pred_name == 3:
-            pred_name = 'glassFile'
-        elif pred_name == 4:
+        elif pred_name == 1:
             pred_name = 'paperFile'
+        elif pred_name == 2:
+            pred_name = 'glassFile'
+        elif pred_name == 3:
+            pred_name = 'paperFile'
+        elif pred_name == 4:
+            pred_name = 'plasticFile'
         elif pred_name == 5:
-            pred_name = 'organicFile'
-        elif pred_name == 6:
-            pred_name = 'trash'
+            pred_name = 'trashFile'
+
 
     # 정답 확인
     if pred_name == waste_name:
