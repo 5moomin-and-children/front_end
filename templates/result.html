@@ -4,6 +4,7 @@
 
     <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -11,7 +12,7 @@
     <script defer src="../static/js/result.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/result_style.css">
 
     <!-- Webpage Title -->
     <title>Title</title>
@@ -19,14 +20,45 @@
 </head>
 
 <body>
-    <div class="result_header">
-        <img src="뒤로가기">
-        <img src="로고">
+    <div class="total_result_container">
+        <div class="notice">
+            게시판
+        </div>
+        <p></p>
+        <div class="result_container">
+            <p></p>
+            <div class="top_rank">
+                <div class="second" id="second">
+
+                </div>
+                <div class="first">
+                    <img class="crown_img" src="../static/img/crown.png">
+                    <div class="first_medal" id="first">
+
+                    </div>
+
+                </div>
+                <div class="third" id="third">
+
+                </div>
+            </div>
+            <p></p>
+            <div class="rest_ranking">
+                <table frame=void class="rank" id="rank" >
+                    <tr>
+                        <td>몇동 몇호</td>
+                        <td>점수</td>
+                    </tr>
+
+                </table>
+            </div>
+            <p></p>
+            <div class="exit_btn">
+                <button type="submit" value="submit" onclick="logout()">종료</button>
+            </div>
+        </div>
+
     </div>
-
-    <table class="ranking" id="rank">
-
-    </table>
 
 </body>
 </html>

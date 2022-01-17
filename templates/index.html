@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="UTF-8">
 
@@ -18,37 +18,154 @@
     <title>Title</title>
     <style>
         * {
-            font-family: 'East Sea Dokdo', cursive;
+            font-family: 'Sunflower', sans-serif;
         }
+        body {
+            position: relative;
+            height: 100vh;
+            background-image: url('../static/img/sign_up_background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .all_wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo_wrapper {
+            width: 50px;
+            height: 100px;
+
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 0;
+        }
+
+        .logo {
+            object-fit: contain;
+        }
+
+        .login {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            border-radius: 30px;
+            position: relative;
+
+
+            width: 70vh;
+            height: 50vh;
+        }
+
+        .login h4 {
+            font-size: 2vh;
+            padding-left: 5%;
+        }
+
+        .login_upper_part {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #77B3BE;
+            border-radius: 30px 30px 0 0;
+            height: 7vh;
+            width: 100%;
+        }
+
+        .sign_in_text {
+            font-size: 2vw;
+            font-weight: bold;
+            color: white;
+            justify-content: center;
+            text-align: center;
+            padding-top: 1vh;
+        }
+
+        .login_id {
+            width: 80%;
+            margin-top: 10%;
+            padding-right: 5%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #userid {
+            width: 18vw;
+            height: 3vh;
+
+
+        }
+
+        .login_pw {
+            width: 80%;
+            display: flex;
+            padding-right: 5%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #userpw {
+            width: 18vw;
+            height: 3vh;
+
+        }
+
+        .btns {
+            width: 80%;
+            margin-top: 7%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .btns button {
+            font-weight: bold;
+            font-size: 2vh;
+            border: none;
+            color: white;
+            background-color: #77B3BE;
+            border-radius: 50px;
+            padding: 10px;
+            width: 8vw;
+            height: 6vh;
+        }
+
+
     </style>
-
-</head>
 <body>
-
-    <div class="login">
-        <h4>내가 분리수거 왕이 될 상인가?</h4>
-        <div class="login_upper_part">
-            <img class="logo" src="로고이미지">
-
-            <div class="sign_in_text">로그인이오.</div>
+    <div class="all_wrapper">
+        <div class="logo_wrapper">
+            <img class="logo" src="../static/img/moomin.png">
         </div>
-        <div class="login_id">
-            <h4>몇동? 몇호?</h4>
-            <input type="text" placeholder="ex)101동 1101호 ->1011101" id="userid">
-        </div>
-        <div class="login_pw">
-            <h4>PW</h4>
-            <input type="password" placeholder="비밀번호 입력해주세요!" id="userpw">
-        </div>
-        <div class="btns">
-            <div class="login_button">
-                <button type="submit" value="submit" onclick="login()">접속</button>
+        <div class="login">
+            <div class="login_upper_part">
+                <div class="sign_in_text">접 속</div>
             </div>
-            <div class="signup_button">
-                <button type="submit" value="submit" onclick="register()">가입</button>
+
+            <div class="login_id">
+                <h4>너의 집? : </h4>
+                <input type="text" placeholder="ex)101동 1101호 ->1011101" id="userid">
+            </div>
+            <div class="login_pw">
+                <h4>비밀번호 : </h4>
+                <input type="password" placeholder="비밀번호 입력해주세요!" id="userpw">
+            </div>
+            <div class="btns">
+                <div class="login_button">
+                    <button type="submit" value="submit" onclick="login()">접속</button>
+                </div>
+                <div class="signup_button">
+                    <button type="submit" value="submit" onclick="register()">가입</button>
+                </div>
             </div>
         </div>
-
     </div>
 
 </body>

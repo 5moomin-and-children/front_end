@@ -1,0 +1,134 @@
+/*result 페이지 css*/
+
+* {
+  font-family: 'Sunflower', sans-serif;
+}
+
+body {
+  background-image: url("../img/결과페이지 배경.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+table.rank {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  margin : 20px 10px;
+}
+table.rank td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 20px;
+}
+.notice {
+  background-color: white;
+  width: 50vw;
+  height: 10vw;
+  text-align: center;
+  line-height: 10vw;
+  font-size: 8vw;
+  font-weight: bold;
+  color: grey;
+
+}
+
+.top_rank {
+  width: 38vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: row;
+}
+
+.result_container {
+  width: 40vw;
+  height: 60vw;
+  background-color: #ECEBEB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.total_result_container {
+  background-color: #E4C268;
+  width: 50vw;
+  height: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top_text {
+  font-size: 20px;
+}
+
+.first {
+  width: 17vw;
+  height: 17vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.first_medal {
+  background-color: #F4ED37;
+  width: 15vw;
+  height: 15vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+  line-height: 1vw;
+}
+
+.crown_img {
+  width: 4vw;
+  height: 4vw;
+}
+
+.second {
+  background-color: #D1D7D4;
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+  line-height: 0;
+}
+
+.third {
+  background-color: #E0CEA0;
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+  line-height: 0;
+}
+
+.exit_btn {
+   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.exit_btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 5vw;
+  border: 0;
+  outline: none;
+  border-radius: 40px;
+  background-color: #E4C268;
+  font-size: 2vw;
+  color: white;
+}

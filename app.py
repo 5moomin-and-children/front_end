@@ -3,15 +3,18 @@ from pymongo import MongoClient
 from datetime import datetime
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from keras.models import load_model
 import tensorflow as tf
 import hashlib
 import random
 import codecs
 import certifi
 import jwt
+import h5py
+
 
 # DB
-client = MongoClient('mongodb+srv://test:sparta@cluster0.jhevf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', tlsCAFile=certifi.where())
+client = MongoClient('mongodb+srv://test:sparta@cluster0.zxyme.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
 db = client.recycleKing
 
 # jwt Secret key
@@ -21,7 +24,7 @@ SECRET_KEY = 'recycleKing'
 app = Flask(__name__)
 
 # model
-model = tf.keras.models.load_model('static/model/model.h5')
+model = load_model('static/model/model.h5')
 
 
 
@@ -40,6 +43,12 @@ def home():
 
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+
+@app.route('/webcam')
+def webcam():
+    return render_template('Webcam.html')
+
 
 @app.route('/login')
 def login():
@@ -130,6 +139,7 @@ def api_recycle_check():
     waste_name = request.form['waste'] # 쓰레기통이름
     waste_img = request.files['waste_img']  # 이미지 파일
 
+
     # 이미지 파일 저장
     extension = waste_img.filename.split('.')[-1]
     today = datetime.now()
@@ -208,4 +218,4 @@ def isLogin():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0', port=5000, debug=True)
