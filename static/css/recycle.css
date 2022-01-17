@@ -1,24 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+* {
+  font-family: 'Sunflower', sans-serif;
+}
 
 input {
     display: none;
 }
 
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background-image: url('../img/background.jpg')
+html {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-img {
+form {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 70vw;
+    top: 40%;
+    left: 30%;
+}
+.trash_set {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.trash {
     width: 150px;
     height: 300px;
 }
 
-img:hover {
+.trash:hover {
     transform: scale(1.5, 1.5);
     transition: transform.7s;
 }
 
 #c {
-    text-align: center;
+    font-size: 1.2vw;
+    font-weight: bold;
+    background-color: pink;
+    width: 10vw;
+    height: 5vw;
+    position: absolute;
+    top:10%;
+    left: 85%;
+    color: black;
+    border-radius: 40px;
+    border: 0;
+    outline: none;
 }
+
+.popup {
+    display: none;
+    width: 10vw;
+    text-align: center;
+    background-color: ivory;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 18px;
+}
+
+.popup hr {
+    width: 99%;
+    color: grey;
+}
+
+

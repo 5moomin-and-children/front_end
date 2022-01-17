@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 
         <!-- Title -->
         <title>분리수거함</title>
@@ -10,85 +11,91 @@
         <!-- Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
-        <script>
-            let score = 0; // 점수
-
-            function loadFile(waste) {
-                let form = document.form;
-                let formData = new FormData(form);
-
-                let wasteFile = document.getElementById(waste);
-
-                console.log(wasteFile)
-
-                formData.append('waste', waste)
-                formData.append('waste_img', wasteFile.files[0]);
-
-                $.ajax({
-                    url : "/api/recycle_check",
-                    type : "POST",
-                    enctype: 'multipart/form-data',
-                    processData : false,
-                    contentType : false,
-                    data : formData,
-
-                    success: function(response) {
-                        wasteFile.value = '';
-
-                        if(response['result'] == 'true') {
-                            score ++;
-                            alert('올바른 분리수거군,, 자네 상점을 주겠네')
-                        } else {
-                            score --;
-                            alert('분리수거도 못해? 사형이다.')
-                        }
-
-                    }
-                });
-            }
-            function submit() {
-                $.ajax({
-                    url : "/api/submit",
-                    type : "POST",
-                    data : {
-                        score: score // 최종 점수 제출
-                    },
-                    success: function(response) {
-                        msg = '분리수거 종료 ( 분리수거 점수 : ' + score + ' )'
-                        alert(msg)
-                        window.location.href='/result'
-                    }
-                });
-            }
-        </script>
+        <script defer src="../static/js/Webcam.js"></script>
     </head>
 
     <body>
-        <h1>내가 분리수거 왕이 될 상인가?</h1>
         <form method="post" name="form">
-            <img src="../static/img/ewaste.jpg" onclick="$('#eWasteFile').click()">
-            <input type="file" id="eWasteFile" name="eWasteFile" accept="image/*" onchange="loadFile('eWasteFile')">
+            <div class="trash_set">
+                <div class="popup" id="popup1">
+                    <div class="image_upload_btn">
+                        <p class="upload_text" onclick="$('#eWasteFile').click()">이미지 업로드</p>
+                        <input type="file" id="eWasteFile" name="eWasteFile" accept="image/*"
+                               onchange="loadFile('eWasteFile')">
+                    </div>
+                    <hr>
+                    <p onclick="popup('eWasteFile')"> 카메라촬영 </p>
+                </div>
+                <p></p>
+                <img src="../static/img/trash.png" class="trash" onclick=popup_show1()>
+            </div>
 
-            <img src="../static/img/plastic.jpg" onclick="$('#plasticFile').click()">
-            <input type="file" id="plasticFile" name="plasticFile" accept="image/*" onchange="loadFile('plasticFile')">
 
-            <img src="../static/img/metal.jpg" onclick="$('#metalFile').click()">
-            <input type="file" id="metalFile" name="metalFile" accept="image/*" onchange="loadFile('metalFile')">
+            <div class="trash_set">
+                <div class="popup" id="popup2">
+                    <div class="image_upload_btn">
+                        <p class="upload_text" onclick="$('#plasticFile').click()">이미지 업로드</p>
+                        <input type="file" id="plasticFile" name="plasticFile" accept="image/*"
+                               onchange="loadFile('plasticFile')">
+                    </div>
+                    <hr>
+                    <p onclick="popup('plasticFile')"> 카메라촬영 </p>
+                </div>
+                <p></p>
+                <img src="../static/img/plastic.png" class="trash" onclick=popup_show2()>
+            </div>
 
-            <img src="../static/img/glass.jpg" onclick="$('#glassFile').click()">
-            <input type="file" id="glassFile" name="glassFile" accept="image/*" onchange="loadFile('glassFile')">
 
-            <img src="../static/img/paper.jpg" onclick="$('#paperFile').click()">
-            <input type="file" id="paperFile" name="paperFile" accept="image/*" onchange="loadFile('paperFile')">
+            <div class="trash_set">
+                <div class="popup" id="popup3">
+                    <div class="image_upload_btn">
+                        <p class="upload_text" onclick="$('#metalFile').click()">이미지 업로드</p>
+                        <input type="file" id="metalFile" name="metalFile" accept="image/*"
+                               onchange="loadFile('metalFile')">
+                    </div>
+                    <hr>
+                    <p onclick="popup('metalFile')"> 카메라촬영 </p>
+                </div>
+                <p></p>
+                <img src="../static/img/can.png" class="trash" onclick=popup_show3()>
+            </div>
 
-            <img src="../static/img/organic.jpg" onclick="$('#organicFile').click()">
-            <input type="file" id="organicFile" name="organicFile" accept="image/*" onchange="loadFile('organicFile')">
+
+            <div class="trash_set">
+                <div class="popup" id="popup4">
+                    <div class="image_upload_btn">
+                        <p class="upload_text" onclick="$('#glassFile').click()">이미지 업로드</p>
+                        <input type="file" id="glassFile" name="glassFile" accept="image/*"
+                               onchange="loadFile('glassFile')">
+                    </div>
+                    <hr>
+                    <p onclick="popup('glassFile')"> 카메라촬영 </p>
+                </div>
+                <p></p>
+                <img src="../static/img/glass.png" class="trash" onclick=popup_show4()>
+            </div>
+
+
+            <div class="trash_set">
+                <div class="popup" id="popup5">
+                    <div class="image_upload_btn">
+                        <p class="upload_text" onclick="$('#paperFile').click()">이미지 업로드</p>
+                        <input type="file" id="paperFile" name="paperFile" accept="image/*"
+                               onchange="loadFile('paperFile')">
+                    </div>
+                    <hr>
+                    <p onclick="popup('paperFile')"> 카메라촬영 </p>
+                </div>
+                <p></p>
+                <img src="../static/img/paper.png" class="trash" onclick=popup_show5()>
+            </div>
+
+
         </form>
 
-        <div class="c">
-            <button onclick="submit()">분리수거 끝</button>
-        </div>
+
+        <button id="c" onclick="submit()">분리수거 종료</button>
+
 
     </body>
 </html>
